@@ -3,18 +3,18 @@
 
 **Instagram** is a photo sharing app using Parse as its backend.
 
-Time spent: **10** hours spent in total
+Time spent: **15** hours spent in total
 
 ## User Stories
 
 The following **required** functionality is completed:
 
-- [] User can sign up to create a new account using Parse authentication (+1pt)
-- [ ] User can log in and log out of his or her account (+1pt)
-- [ ] The current signed in user is persisted across app restarts (+1pt)
-- [ ] User can take a photo, add a caption, and post it to "Instagram" (+2pt)
-- [ ] User can view the last 20 posts submitted to "Instagram" (+2pt)
-- [ ] User can pull to refresh the last 20 posts submitted to "Instagram" (+1pt)
+- [x] User can sign up to create a new account using Parse authentication (+1pt)
+- [x] User can log in and log out of his or her account (+1pt)
+- [x] The current signed in user is persisted across app restarts (+1pt)
+- [x] User can take a photo, add a caption, and post it to "Instagram" (+2pt)
+- [x] User can view the last 20 posts submitted to "Instagram" (+2pt)
+- [x] User can pull to refresh the last 20 posts submitted to "Instagram" (+1pt)
 - [ ] User can tap a post to view post details, including timestamp and caption (+2pt)
 
 The following **stretch** features are implemented:
@@ -33,7 +33,7 @@ The following **stretch** features are implemented:
 - [ ] Tapping on a post's username or profile photo goes to that user's profile page (+2pt)
 - [ ] User can comment on a post and see all comments for each post in the post details screen (+3pt)
 - [ ] User can like a post and see number of likes for each post in the post details screen (+1pt)
-- [ ] Run your app on your phone and use the camera to take the photo (+1pt)
+- [x] Run your app on your phone and use the camera to take the photo (+1pt)
 
 
 The following **additional** features are implemented:
