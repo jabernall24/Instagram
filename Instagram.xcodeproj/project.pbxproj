@@ -7,17 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E3AC1F1215BDDAB00881FAC /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AC1F0215BDDAB00881FAC /* HomeScreenViewController.swift */; };
+		6E3AC1F3215BEB9800881FAC /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AC1F2215BEB9800881FAC /* Post.swift */; };
 		6E76AB89215B4E8400270D56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E76AB88215B4E8400270D56 /* AppDelegate.swift */; };
 		6E76AB8E215B4E8400270D56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E76AB8C215B4E8400270D56 /* Main.storyboard */; };
 		6E76AB90215B4E8600270D56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E76AB8F215B4E8600270D56 /* Assets.xcassets */; };
 		6E76AB93215B4E8600270D56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E76AB91215B4E8600270D56 /* LaunchScreen.storyboard */; };
 		6E76AB9B215B518D00270D56 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E76AB9A215B518D00270D56 /* LogInViewController.swift */; };
+		6E8AF903215C053C004474CB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8AF902215C053C004474CB /* ProfileViewController.swift */; };
+		6E8AF905215C0548004474CB /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8AF904215C0548004474CB /* CaptureViewController.swift */; };
+		6E8AF907215C282E004474CB /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8AF906215C282E004474CB /* PostCell.swift */; };
+		6EA17C89215F00C100A80FEE /* Billabong.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6EA17C88215F003F00A80FEE /* Billabong.ttf */; };
 		7E2708F1F19607BB16487883 /* Pods_Instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67EFB3A650728FB207DED365 /* Pods_Instagram.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2AB3C9CDBB1B086B868B797E /* Pods-Instagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Instagram/Pods-Instagram.release.xcconfig"; sourceTree = "<group>"; };
 		67EFB3A650728FB207DED365 /* Pods_Instagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E3AC1F0215BDDAB00881FAC /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+		6E3AC1F2215BEB9800881FAC /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		6E76AB85215B4E8400270D56 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E76AB88215B4E8400270D56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E76AB8D215B4E8400270D56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -25,6 +33,10 @@
 		6E76AB92215B4E8600270D56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E76AB94215B4E8600270D56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E76AB9A215B518D00270D56 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		6E8AF902215C053C004474CB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		6E8AF904215C0548004474CB /* CaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
+		6E8AF906215C282E004474CB /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		6EA17C88215F003F00A80FEE /* Billabong.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Billabong.ttf; sourceTree = "<group>"; };
 		F84974A705614CBCEA930699 /* Pods-Instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Instagram/Pods-Instagram.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,14 +73,28 @@
 		6E76AB87215B4E8400270D56 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				6EA17C8A215F06EF00A80FEE /* Fonts */,
 				6E76AB88215B4E8400270D56 /* AppDelegate.swift */,
 				6E76AB8C215B4E8400270D56 /* Main.storyboard */,
 				6E76AB8F215B4E8600270D56 /* Assets.xcassets */,
 				6E76AB91215B4E8600270D56 /* LaunchScreen.storyboard */,
 				6E76AB94215B4E8600270D56 /* Info.plist */,
 				6E76AB9A215B518D00270D56 /* LogInViewController.swift */,
+				6E3AC1F0215BDDAB00881FAC /* HomeScreenViewController.swift */,
+				6E3AC1F2215BEB9800881FAC /* Post.swift */,
+				6E8AF902215C053C004474CB /* ProfileViewController.swift */,
+				6E8AF904215C0548004474CB /* CaptureViewController.swift */,
+				6E8AF906215C282E004474CB /* PostCell.swift */,
 			);
 			path = Instagram;
+			sourceTree = "<group>";
+		};
+		6EA17C8A215F06EF00A80FEE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6EA17C88215F003F00A80FEE /* Billabong.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		96566172ED3E1D05E1D3415F /* Frameworks */ = {
@@ -151,6 +177,7 @@
 				6E76AB93215B4E8600270D56 /* LaunchScreen.storyboard in Resources */,
 				6E76AB90215B4E8600270D56 /* Assets.xcassets in Resources */,
 				6E76AB8E215B4E8400270D56 /* Main.storyboard in Resources */,
+				6EA17C89215F00C100A80FEE /* Billabong.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,15 +215,23 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Instagram/Pods-Instagram-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts-Swift/BoltsSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
+				"${BUILT_PRODUCTS_DIR}/ParseLiveQuery/ParseLiveQuery.framework",
+				"${BUILT_PRODUCTS_DIR}/ParseUI/ParseUI.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoltsSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ParseLiveQuery.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ParseUI.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -210,8 +245,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E8AF907215C282E004474CB /* PostCell.swift in Sources */,
 				6E76AB9B215B518D00270D56 /* LogInViewController.swift in Sources */,
+				6E8AF905215C0548004474CB /* CaptureViewController.swift in Sources */,
 				6E76AB89215B4E8400270D56 /* AppDelegate.swift in Sources */,
+				6E8AF903215C053C004474CB /* ProfileViewController.swift in Sources */,
+				6E3AC1F1215BDDAB00881FAC /* HomeScreenViewController.swift in Sources */,
+				6E3AC1F3215BEB9800881FAC /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

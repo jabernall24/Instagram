@@ -13,13 +13,20 @@ class LogInViewController: UIViewController {
 
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        passwordField.isSecureTextEntry = true
+        loginButton.layer.cornerRadius = 10
+        registerButton.layer.cornerRadius = 10
 
     }
     
     @IBAction func onSignIn(_ sender: Any) {
-        PFUser.logInWithUsername(inBackground: usernameField.text!, password: passwordField.text!) { (user: PFUser?, error: Error?) in
+        PFUser.logInWithUsername(inBackground: usernameField.text ?? "", password: passwordField.text ?? "") { (user: PFUser?, error: Error?) in
             if user != nil{
                 print("you're logged in")
                 self.performSegue(withIdentifier: "logInSegue", sender: nil)
@@ -28,8 +35,9 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func onSignUp(_ sender: Any) {
-        let newUser = PFUser()
         
+        let newUser = PFUser()
+
         newUser.username = usernameField.text
         newUser.password = passwordField.text
         newUser.signUpInBackground { (success: Bool, error: Error?) in

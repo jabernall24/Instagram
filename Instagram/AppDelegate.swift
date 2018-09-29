@@ -13,10 +13,9 @@ import Parse
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // code to initialize Parse
         Parse.initialize(
             with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
                 configuration.applicationId = "instagram-clone-423"
@@ -24,6 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 configuration.server = "https://instagram-clone-423.herokuapp.com/parse"
             })
         )
+        // checks if user is logged in
+        if PFUser.current() != nil{
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "tabBar")
+        }
+        
         return true
     }
 
