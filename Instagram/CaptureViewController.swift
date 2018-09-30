@@ -11,7 +11,7 @@ import Parse
 
 class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
     
-    @IBOutlet weak var calcelButton: UIButton!
+    @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var shareActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var captionTextView: UITextView!
@@ -22,12 +22,10 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         super.viewDidLoad()
         
         captionTextView.delegate = self
-        captionTextView.text = "Write a caption..."
-        captionTextView.textColor = .lightGray
+        textPlaceholder()
         
         shareButton.isUserInteractionEnabled = true
-        calcelButton.isUserInteractionEnabled = true
-
+        logOutButton.isUserInteractionEnabled = true
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -39,16 +37,21 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if captionTextView.text.isEmpty {
-            captionTextView.text = "Write a caption..."
-            captionTextView.textColor = .lightGray
+            textPlaceholder()
         }
     }
     
-    @IBAction func onCancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    func textPlaceholder(){
+        captionTextView.text = "Write a caption..."
+        captionTextView.textColor = .lightGray
+    }
+    
+    @IBAction func onLogOut(_ sender: Any) {
+        self.performSegue(withIdentifier: "logOutSegue", sender: self)
     }
     
     @IBAction func onShare(_ sender: Any) {
+        self.captionTextView.resignFirstResponder()
         if captureImageView.image == UIImage(named: "image_placeholder"){
             let alert = UIAlertController(title: "Posting an image is required", message: "Please upload an image to be able to post", preferredStyle: .alert)
             let ok = UIAlertAction(title: "Okay", style: .default)
@@ -61,27 +64,24 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
         
         shareButton.isUserInteractionEnabled = false
-        self.calcelButton.isUserInteractionEnabled = false
+        self.logOutButton.isUserInteractionEnabled = false
         self.shareActivityIndicator.startAnimating()
         
         let newPost = Post()
-        newPost.postUserImage(image: captureImageView.image, withCaption: captionTextView.text) { (success: Bool, error: Error?) in
+        newPost.postUserImage(image: captureImageView.image, withCaption: captionTextView.text, by: PFUser.current()!, on: NSDate()) { (success: Bool, error: Error?) in
             if success{
-                self.shareActivityIndicator.stopAnimating()
-                self.dismiss(animated: true, completion: nil)
+                self.textPlaceholder()
+                self.captureImageView.image = UIImage(named: "image_placeholder")
             }else{
-                self.shareActivityIndicator.stopAnimating()
-                
                 let errorAlert = UIAlertController(title: "Failed to upload", message: "Please try again later", preferredStyle: .alert)
                 let okay = UIAlertAction(title: "Okay", style: .default)
                 errorAlert.addAction(okay)
                 self.present(errorAlert, animated: true)
-                
-                self.calcelButton.isUserInteractionEnabled = true
-                self.shareButton.isUserInteractionEnabled = true
-                
                 print("error: " + (error?.localizedDescription)!)
             }
+            self.shareActivityIndicator.stopAnimating()
+            self.shareButton.isUserInteractionEnabled = true
+            self.logOutButton.isUserInteractionEnabled = true
         }
     }
     
@@ -124,7 +124,6 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         let originalImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         
-        // Do something with the images (based on your use case)
         self.captureImageView.image = originalImage
         dismiss(animated: true, completion: nil)
     }

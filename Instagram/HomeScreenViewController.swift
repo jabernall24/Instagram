@@ -26,7 +26,7 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource {
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.black,
              NSAttributedString.Key.font: UIFont(name: "Billabong", size: 30)!]
-        fetchData()
+        fetchData(limit: 20)
         refreshController = UIRefreshControl()
         refreshController.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
         tableView.insertSubview(refreshController, at: 0)
@@ -59,22 +59,13 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource {
         }
         return cell
     }
-    @IBAction func onLogOut(_ sender: Any) {
-        PFUser.logOutInBackground { (error: Error?) in
-            print("you logged out")
-            self.performSegue(withIdentifier: "logOutFromMain", sender: self)
-        }
-    }
-    @IBAction func onCapture(_ sender: Any) {
-        self.performSegue(withIdentifier: "capture", sender: self)
-    }
     
-    func fetchData(){
+    func fetchData(limit: Int){
         activityIndicator.startAnimating()
         let query = PFQuery(className: "Post")
         query.order(byDescending: "createdAt")
         query.includeKey("author")
-        query.limit = 20
+        query.limit = limit
         
         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
             if error == nil{
@@ -90,6 +81,15 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource {
         }
     }
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl){
-        fetchData()
+        fetchData(limit: 20)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UITableViewCell
+        if let indexPath = tableView.indexPath(for: cell){
+            let post = posts[indexPath.row]
+            let postDetailViewController = segue.destination as! PostDetailViewController
+            postDetailViewController.post = post
+        }
     }
 }
