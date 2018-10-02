@@ -47,7 +47,8 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func onLogOut(_ sender: Any) {
-        self.performSegue(withIdentifier: "logOutSegue", sender: self)
+        print("tapped logout")
+        self.performSegue(withIdentifier: "logOut", sender: self)
     }
     
     @IBAction func onShare(_ sender: Any) {
@@ -68,7 +69,7 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         self.shareActivityIndicator.startAnimating()
         
         let newPost = Post()
-        newPost.postUserImage(image: captureImageView.image, withCaption: captionTextView.text, by: PFUser.current()!, on: NSDate()) { (success: Bool, error: Error?) in
+        newPost.postUserImage(image: resize(image: captureImageView.image!), withCaption: captionTextView.text) { (success: Bool, error: Error?) in
             if success{
                 self.textPlaceholder()
                 self.captureImageView.image = UIImage(named: "image_placeholder")
@@ -127,5 +128,19 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
         self.captureImageView.image = originalImage
         dismiss(animated: true, completion: nil)
     }
+    
+    func resize(image: UIImage) -> UIImage {
+        let rect = CGRect(origin: .zero, size: CGSize(width: view.frame.width - 30, height: 345))
+        let resizeImageView = UIImageView(frame: rect)
+        resizeImageView.contentMode = UIView.ContentMode.scaleAspectFill
+        resizeImageView.image = image
+        
+        UIGraphicsBeginImageContext(resizeImageView.frame.size)
+        resizeImageView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+
     
 }

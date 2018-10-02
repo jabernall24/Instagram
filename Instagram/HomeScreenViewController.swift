@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import ParseLiveQuery
 
-class HomeScreenViewController: UIViewController, UITableViewDataSource {
+class HomeScreenViewController: UIViewController, UITableViewDataSource, UIScrollViewDelegate {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -26,7 +26,7 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource {
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.black,
              NSAttributedString.Key.font: UIFont(name: "Billabong", size: 30)!]
-        fetchData(limit: 20)
+        fetchData()
         refreshController = UIRefreshControl()
         refreshController.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
         tableView.insertSubview(refreshController, at: 0)
@@ -60,12 +60,12 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource {
         return cell
     }
     
-    func fetchData(limit: Int){
+    func fetchData(){
         activityIndicator.startAnimating()
         let query = PFQuery(className: "Post")
         query.order(byDescending: "createdAt")
         query.includeKey("author")
-        query.limit = limit
+        query.limit = 20
         
         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
             if error == nil{
@@ -81,7 +81,7 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource {
         }
     }
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl){
-        fetchData(limit: 20)
+        fetchData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -28,8 +28,9 @@ class LogInViewController: UIViewController {
     @IBAction func onSignIn(_ sender: Any) {
         PFUser.logInWithUsername(inBackground: usernameField.text ?? "", password: passwordField.text ?? "") { (user: PFUser?, error: Error?) in
             if user != nil{
-                print("you're logged in")
                 self.performSegue(withIdentifier: "logInSegue", sender: nil)
+            }else{
+                self.showAlert(error: error)
             }
         }
     }
@@ -45,12 +46,16 @@ class LogInViewController: UIViewController {
                 print("yay created a user")
                 self.performSegue(withIdentifier: "logInSegue", sender: nil)
             }else{
-                print(error?.localizedDescription ?? "")
-                if error?._code == 202{
-                    print("username is taken.")
-                }
+                self.showAlert(error: error)
             }
         }
+    }
+    
+    func showAlert(error: Error?){
+        let alertController = UIAlertController(title: error?.localizedDescription, message: "Please check information and try again.", preferredStyle: .alert)
+        let okay = UIAlertAction(title: "Okay", style: .default)
+        alertController.addAction(okay)
+        self.present(alertController, animated: true)
     }
 
 }

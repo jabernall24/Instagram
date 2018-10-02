@@ -294,10 +294,12 @@
                                     <outletCollection property="gestureRecognizers" destination="Q7f-gF-654" appends="YES" id="pq7-6c-Q5X"/>
                                 </connections>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ewc-6D-r9x">
-                                <rect key="frame" x="141" y="72" width="218" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ewc-6D-r9x">
+                                <rect key="frame" x="141" y="72" width="226" height="180"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="8RD-Jx-pEE"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -310,7 +312,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="Ewc-6D-r9x" firstAttribute="top" secondItem="qLB-6b-ErA" secondAttribute="top" constant="8" id="0TF-vG-uWX"/>
                             <constraint firstItem="bpd-5w-Sti" firstAttribute="top" secondItem="qLB-6b-ErA" secondAttribute="top" constant="8" id="5UA-NX-mcn"/>
+                            <constraint firstItem="qLB-6b-ErA" firstAttribute="trailing" secondItem="Ewc-6D-r9x" secondAttribute="trailing" constant="8" id="NGc-hQ-No7"/>
+                            <constraint firstItem="Ewc-6D-r9x" firstAttribute="leading" secondItem="bpd-5w-Sti" secondAttribute="trailing" constant="8" id="Y2x-Hi-8JY"/>
                             <constraint firstItem="bpd-5w-Sti" firstAttribute="leading" secondItem="qLB-6b-ErA" secondAttribute="leading" constant="8" id="xnq-xZ-GFZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qLB-6b-ErA"/>
@@ -325,8 +330,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Log out"/>
                                 <connections>
-                                    <action selector="onCancel:" destination="JBL-7V-mdP" eventType="touchUpInside" id="s3t-Kz-Fig"/>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="logOutSegue" id="abN-ad-1PN"/>
+                                    <action selector="onLogOut:" destination="JBL-7V-mdP" eventType="touchUpInside" id="iKA-Ir-19j"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -347,6 +351,7 @@
                         <outlet property="logOutButton" destination="QJA-lB-qny" id="s6e-C8-8P1"/>
                         <outlet property="shareActivityIndicator" destination="daK-bu-VOC" id="zy1-Ym-JcP"/>
                         <outlet property="shareButton" destination="nuW-Yh-Dkw" id="ffl-Ov-LLt"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="logOut" id="tLV-sg-OTX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0qx-B0-EwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -439,6 +444,6 @@
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="abN-ad-1PN"/>
+        <segue reference="tLV-sg-OTX"/>
     </inferredMetricsTieBreakers>
 </document>

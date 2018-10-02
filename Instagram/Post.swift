@@ -16,23 +16,21 @@ class Post: PFObject, PFSubclassing {
     @NSManaged var caption: String
     @NSManaged var commentsCount: Int
     @NSManaged var likesCount: Int
-    @NSManaged var date: String
     
     static func parseClassName() -> String {
         return "Post"
     }
     
-    func postUserImage(image: UIImage?, withCaption caption: String?, by author: PFUser, on date: NSDate, withCompletion completion: PFBooleanResultBlock?) {
+    func postUserImage(image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
         // use subclass approach
         let post = Post()
         
         // Add relevant fields to the object
         post.image = getPFFileFromImage(image: image)! // PFFile column type
-        post.author = author // Pointer column type that points to PFUser
+        post.author = PFUser.current()! // Pointer column type that points to PFUser
         post.caption = caption ?? ""
         post.likesCount = 0
         post.commentsCount = 0
-        post.date = DateFormatter.localizedString(from: date as Date, dateStyle: .medium, timeStyle: .short)
         
         // Save object (following function will save the object in Parse asynchronously)
         post.saveInBackground(block: completion)
