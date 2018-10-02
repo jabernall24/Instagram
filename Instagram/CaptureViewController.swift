@@ -47,8 +47,10 @@ class CaptureViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func onLogOut(_ sender: Any) {
-        print("tapped logout")
-        self.performSegue(withIdentifier: "logOut", sender: self)
+        PFUser.logOutInBackground { (error: Error?) in
+            print("you logged out")
+            self.performSegue(withIdentifier: "logOut", sender: self)
+        }
     }
     
     @IBAction func onShare(_ sender: Any) {
